@@ -1,5 +1,3 @@
-// Original code from https://github.com/luwes/wesc
-
 // Must go in a client component
 // > Otherwise will error:
 // > Attempted to call the default export of ... from the server but it's on the client.
@@ -8,7 +6,9 @@
 export function SolarisWrapper({ children }) {
   if (typeof window === 'undefined') {
     // eslint-disable-next-line import/no-unresolved
-    return import('./render.js').then(({ render }) => render(resolve(children)));
+    return import('./render.js').then(({ render }) =>
+      render(resolve(children))
+    );
   }
 
   return children;
@@ -38,7 +38,10 @@ function resolve(children, result = []) {
         // Function component
         resolve(node.type(node.props), result);
       }
-    } else if (typeof node.type === 'object' && typeof node.type.render === 'function') {
+    } else if (
+      typeof node.type === 'object' &&
+      typeof node.type.render === 'function'
+    ) {
       resolve(node.type.render(node.props), result);
     }
   }
