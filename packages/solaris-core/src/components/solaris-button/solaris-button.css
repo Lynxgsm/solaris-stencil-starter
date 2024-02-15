@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+button.solaris-button {
+  border: 1px solid #111;
+  padding: 2rem;
+  background: white;
+  color: black;
+}
