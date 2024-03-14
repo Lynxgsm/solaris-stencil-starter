@@ -1,1 +1,1 @@
-export const VariantValues = ['default', 'outline', 'link'] as const;
+export const VariantValues = ['default', 'outline', 'link', 'muted'] as const;

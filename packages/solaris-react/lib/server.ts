@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+
+// Original code from https://github.com/luwes/wesc
+
 import { parseHTML } from 'linkedom';
 
 (() => {

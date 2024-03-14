@@ -85,7 +85,7 @@
 .bg-comet {
   background-color: $brand-comet;
 }
-.bg-comet {
+.bg-comet-dark {
   background-color: $brand-comet-dark;
 }
 
@@ -260,17 +260,17 @@
   border-color: $system-info-dark;
 }
 
-.border-light-red {
-  border-color: $light-red;
+.border-red-light {
+  border-color: $red-light;
 }
-.border-light-blue {
-  border-color: $light-blue;
+.border-blue-light {
+  border-color: $blue-light;
 }
 .border-light-orange {
-  border-color: $light-orange;
+  border-color: $orange-light;
 }
-.border-light-green {
-  border-color: $light-green;
+.border-green-light {
+  border-color: $green-light;
 }
 
 /* --------------------- Text --------------------- */
@@ -407,19 +407,18 @@
   color: $system-info-dark;
 }
 
-.text-light-red {
-  color: $light-red;
+.text-red-light {
+  color: red-light;
 }
-.text-light-blue {
-  color: $light-blue;
+.text-blue-light {
+  color: blue-light;
 }
-.text-light-orange {
-  color: $light-orange;
+.text-orange-light {
+  color: orange-light;
 }
-.text-light-green {
-  color: $light-green;
+.text-green-light {
+  color: green-light;
 }
-
 /* --------------------- Text Child --------------------- */
 
 .text-transparent * {
@@ -546,17 +545,4 @@
 }
 .text-info-dark * {
   color: $system-info-dark;
-}
-
-.text-light-red * {
-  color: $light-red;
-}
-.text-light-blue * {
-  color: $light-blue;
-}
-.text-light-orange * {
-  color: $light-orange;
-}
-.text-light-green * {
-  color: $light-green;
 }

@@ -1,3 +1,5 @@
+// Original code from https://github.com/luwes/wesc
+
 import React from 'react';
 
 declare global {

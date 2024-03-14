@@ -1,3 +1,5 @@
+// Original code from https://github.com/luwes/wesc
+
 import { RefObject, useEffect } from 'react';
 
 const REACT_PROP_TO_ATTRIBUTE_NAME_MAP = {
@@ -78,27 +80,18 @@ export const NATIVE_GLOBAL_EVENTS: (keyof GlobalEventHandlersEventMap)[] = [
 ];
 
 export const omitEventCallbacks = (customEvents: string[], props: unknown) => {
-  const eventCallbacks = [...customEvents, ...NATIVE_GLOBAL_EVENTS].map(
-    (event) => toCallbackName(event)
-  );
+  const eventCallbacks = [...customEvents, ...NATIVE_GLOBAL_EVENTS].map((event) => toCallbackName(event));
 
-  return Object.fromEntries(
-    Object.entries(props).filter(([key]) => !eventCallbacks.includes(key))
-  );
+  return Object.fromEntries(Object.entries(props).filter(([key]) => !eventCallbacks.includes(key)));
 };
 
 const clearAndUpper = (text: string) => text.replace(/-/, '').toUpperCase();
 
-export const toPascalCase = (kebabText: string) =>
-  kebabText.replace(/(^\w|-\w)/g, clearAndUpper);
+export const toPascalCase = (kebabText: string) => kebabText.replace(/(^\w|-\w)/g, clearAndUpper);
 
 const toCallbackName = (name: string) => `on${toPascalCase(name)}`;
 
-export const useEventListeners = (
-  ref: RefObject<HTMLElement>,
-  customEvents: string[],
-  props: unknown
-) => {
+export const useEventListeners = (ref: RefObject<HTMLElement>, customEvents: string[], props: unknown) => {
   const events = [...customEvents, ...NATIVE_GLOBAL_EVENTS];
   useEffect(() => {
     const { current } = ref;
@@ -141,11 +134,7 @@ export const toNativeAttributeName = (name: string, value: unknown) => {
 };
 
 export const toNativeAttributeValue = (value: unknown) =>
-  typeof value === 'boolean'
-    ? ''
-    : Array.isArray(value)
-      ? value.join(' ')
-      : value;
+  typeof value === 'boolean' ? '' : Array.isArray(value) ? value.join(' ') : value;
 
 export const toNativeProps = (props = {}) =>
   Object.entries(props).reduce((transformedProps, [name, value]) => {

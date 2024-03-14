@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@stencil/core": "4.12.0",
-    "solaris-core": "*",
+    "solaris-core": "^0.0.1",
     "linkedom": "^0.16.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"

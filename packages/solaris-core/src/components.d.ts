@@ -13,18 +13,21 @@ export { ColorScheme } from "./common/types/color-scheme";
 export { Size } from "./common/types/size";
 export namespace Components {
     interface SolarisButton {
-        "colorScheme": ColorScheme;
-        "customClass": string;
+        "color": ColorScheme;
         "fullWidth": boolean;
         "href": string;
         "iconSize": Size;
         "radius": number;
         "size": Size;
+        "styling": string;
         "variant": Variant;
     }
     interface SolarisIcon {
     }
     interface SolarisSwitch {
+    }
+    interface SolarisThemeProvider {
+        "theme": SolarisThemeProps;
     }
 }
 declare global {
@@ -46,31 +49,42 @@ declare global {
         prototype: HTMLSolarisSwitchElement;
         new (): HTMLSolarisSwitchElement;
     };
+    interface HTMLSolarisThemeProviderElement extends Components.SolarisThemeProvider, HTMLStencilElement {
+    }
+    var HTMLSolarisThemeProviderElement: {
+        prototype: HTMLSolarisThemeProviderElement;
+        new (): HTMLSolarisThemeProviderElement;
+    };
     interface HTMLElementTagNameMap {
         "solaris-button": HTMLSolarisButtonElement;
         "solaris-icon": HTMLSolarisIconElement;
         "solaris-switch": HTMLSolarisSwitchElement;
+        "solaris-theme-provider": HTMLSolarisThemeProviderElement;
     }
 }
 declare namespace LocalJSX {
     interface SolarisButton {
-        "colorScheme"?: ColorScheme;
-        "customClass"?: string;
+        "color"?: ColorScheme;
         "fullWidth"?: boolean;
         "href"?: string;
         "iconSize"?: Size;
         "radius"?: number;
         "size"?: Size;
+        "styling"?: string;
         "variant"?: Variant;
     }
     interface SolarisIcon {
     }
     interface SolarisSwitch {
     }
+    interface SolarisThemeProvider {
+        "theme"?: SolarisThemeProps;
+    }
     interface IntrinsicElements {
         "solaris-button": SolarisButton;
         "solaris-icon": SolarisIcon;
         "solaris-switch": SolarisSwitch;
+        "solaris-theme-provider": SolarisThemeProvider;
     }
 }
 export { LocalJSX as JSX };
@@ -80,6 +94,7 @@ declare module "@stencil/core" {
             "solaris-button": LocalJSX.SolarisButton & JSXBase.HTMLAttributes<HTMLSolarisButtonElement>;
             "solaris-icon": LocalJSX.SolarisIcon & JSXBase.HTMLAttributes<HTMLSolarisIconElement>;
             "solaris-switch": LocalJSX.SolarisSwitch & JSXBase.HTMLAttributes<HTMLSolarisSwitchElement>;
+            "solaris-theme-provider": LocalJSX.SolarisThemeProvider & JSXBase.HTMLAttributes<HTMLSolarisThemeProviderElement>;
         }
     }
 }

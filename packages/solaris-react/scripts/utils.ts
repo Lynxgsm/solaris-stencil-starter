@@ -85,12 +85,8 @@ if (!customElements.get('${elementName}')) {
   ${defineCustomElementFunction}();
 }
 
-const customEvents = ${
-  customEvents.length > 0 ? `['${customEvents.join(`', '`)}']` : '[]'
-};
-const ${toPascalCase(
-  elementName
-)} = React.forwardRef(({ children = [], ...props }, ref) => {
+const customEvents = ${customEvents.length > 0 ? `['${customEvents.join(`', '`)}']` : '[]'};
+const ${toPascalCase(elementName)} = React.forwardRef(({ children = [], ...props }, ref) => {
   const nativeProps = toNativeProps(omitEventCallbacks(customEvents, props));
   if (typeof window !== 'undefined') {
     const innerRef = useRef();
@@ -122,9 +118,9 @@ const toTypeDeclaration = (
     ${customEvents.events
       .map(
         (eventName) =>
-          `on${toPascalCase(eventName)}: (event: ${toPascalCase(
-            elementName
-          )}CustomEvent<${customEvents.name}['${eventName}']>) => void`
+          `on${toPascalCase(eventName)}: (event: ${toPascalCase(elementName)}CustomEvent<${
+            customEvents.name
+          }['${eventName}']>) => void`
       )
       .join(',\n  ')}
   }`
@@ -144,9 +140,7 @@ import type React from 'react';
 type GlobalEventHandlers = {
 ${NATIVE_GLOBAL_EVENTS.map(
   (eventName) =>
-    `on${toPascalCase(
-      eventName
-    )}: (event: GlobalEventHandlersEventMap['${eventName}']) => void`
+    `on${toPascalCase(eventName)}: (event: GlobalEventHandlersEventMap['${eventName}']) => void`
 ).join(',\n')}
 };
 type IsEnum<T> = T extends ${enums.join(' | ')} ? true : false;
@@ -154,11 +148,7 @@ type EnumsToStringLiterals<T> = {
   [K in keyof T]: Exclude<IsEnum<T[K]> extends true ? \`\${T[K]}\` : T[K], 'undefined'>;
 };
 
-${elements
-  .map((elementName) =>
-    toTypeDeclaration(elementName, customEvents[elementName])
-  )
-  .join('\n')}
+${elements.map((elementName) => toTypeDeclaration(elementName, customEvents[elementName])).join('\n')}
 
 ${toExport(elements.map(toPascalCase).join(',\n'))}
 `;

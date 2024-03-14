@@ -1,3 +1,5 @@
+// Original code from https://github.com/luwes/wesc
+
 // Must go in a client component
 // > Otherwise will error:
 // > Attempted to call the default export of ... from the server but it's on the client.
