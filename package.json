@@ -6,7 +6,8 @@
     "dev": "turbo dev",
     "storybook": "cd apps/react-project && npm run storybook",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "update": "git pull && npm run build"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

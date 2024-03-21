@@ -7,7 +7,7 @@ export default function App() {
         Hello
       </SolarisButton>
       <section className='row'>
-        <div className='col l12 s12 m6 bg-black hide-on-med-and-down'>
+        <div className='col l12 s12 m6 bg-black'>
           <div className='text-comet' style={{ width: '100%', height: 30 }}>
             Lorem ipsum
           </div>
