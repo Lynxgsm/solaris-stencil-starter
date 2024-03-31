@@ -22,6 +22,18 @@
       "import": "./dist/esm/lib/client/index.js",
       "require": "./dist/cjs/lib/client/index.js",
       "types": "./dist/types/lib/client/index.d.ts"
+    },
+    "./theme.css": {
+      "import": "./dist/styles/solaris.css",
+      "require": "./dist/styles/solaris.css"
+    },
+    "./dist/styles/texts.css": {
+      "import": "./dist/styles/texts.css",
+      "require": "./dist/styles/texts.css"
+    },
+    "./dist/styles/grid.css": {
+      "import": "./dist/styles/grid.css",
+      "require": "./dist/styles/grid.css"
     }
   },
   "directories": {
@@ -32,7 +44,7 @@
     "patches"
   ],
   "scripts": {
-    "prebuild": "del-cli --force ./dist && copyfiles -f ../solaris-core/dist/components/*.js ./dist/esm/components && make-dir ./dist/esm && make-dir ./dist/types",
+    "prebuild": "del-cli --force ./dist && copyfiles -f ../solaris-core/dist/components/*.js ./dist/esm/components && make-dir ./dist/esm && make-dir ./dist/types && copyfiles -f ../solaris-core/dist/styles/*.css ./dist/styles/ ",
     "build": "npm run build:esm && npm run build:types && npm run build:cjs",
     "build:esm": "tsx ./scripts/build.ts",
     "build:types": "tsc -p .",

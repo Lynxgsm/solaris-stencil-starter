@@ -10,3 +10,10 @@ html {
   margin-left: 4rem;
   margin-right: 4rem;
 }
+
+.bg-red {
+  background-color: red;
+  color: green;
+  font-weight: bold;
+  text-decoration: underline;
+}

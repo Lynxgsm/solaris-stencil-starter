@@ -1,22 +1,20 @@
 import { Color } from '@/common/types/color-scheme';
 import { Component, Host, Prop, h } from '@stencil/core';
 
-type SolarisThemeProps = Partial<{
-  presets: 'PART' | 'PRO';
-  colors: Partial<{
-    primary: Color;
-    secondary: Color;
-    accent: Color;
-  }>;
-}>;
-
 @Component({
   tag: 'solaris-theme-provider',
   styleUrl: 'solaris-theme-provider.scss',
   shadow: false,
 })
 export class SolarisThemeProvider {
-  @Prop() theme: SolarisThemeProps = {
+  @Prop() theme: Partial<{
+    presets: 'PART' | 'PRO';
+    colors: Partial<{
+      primary: Color;
+      secondary: Color;
+      accent: Color;
+    }>;
+  }> = {
     presets: 'PART',
     colors: {
       primary: 'supernova',

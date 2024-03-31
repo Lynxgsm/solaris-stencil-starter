@@ -19,14 +19,15 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build",
+    "build": "rm -rf ./src/components.d.ts && stencil build && sh ./src/scripts/compile.sh",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "^4.7.0"
+    "@stencil/core": "^4.7.0",
+    "solaris-values": "*"
   },
   "devDependencies": {
     "@stencil/sass": "^3.0.9",

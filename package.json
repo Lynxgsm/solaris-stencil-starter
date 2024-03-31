@@ -2,7 +2,7 @@
   "name": "solaris-stencil-starter",
   "private": true,
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo build --no-cache",
     "dev": "turbo dev",
     "storybook": "cd apps/react-project && npm run storybook",
     "lint": "turbo lint",

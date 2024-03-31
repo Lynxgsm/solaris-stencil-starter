@@ -1,0 +1,236 @@
+@import './root.scss';
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@mixin btn-animation($defaultColor, $activeColor) {
+  border-color: $defaultColor;
+  background-color: $defaultColor;
+  background-position: center;
+
+  &:not(:disabled):not(.disabled) {
+    &:hover,
+    &:focus,
+    &.focus {
+      box-shadow: 0 0 0 0.3rem $activeColor;
+      border-color: $activeColor;
+      background: $activeColor radial-gradient(circle, transparent 1%, $activeColor 1%) center/15000%;
+
+      .btn-group &,
+      .btn-group-vertical & {
+        box-shadow: none;
+      }
+    }
+
+    &.active,
+    &:active {
+      background-color: rgba($defaultColor, 0.9);
+      background-size: 100%;
+      transition: background 0s;
+      outline: 0;
+      box-shadow: 0 0 0 0.3rem $activeColor !important;
+      border-color: $activeColor;
+    }
+  }
+}
+
+@mixin btn-outline-animation($defaultColor) {
+  &:not(:disabled):not(.disabled) {
+    &:hover,
+    &:focus,
+    &.focus {
+      box-shadow: 0 0 0 0.1rem $defaultColor;
+      color: $defaultColor;
+      background-color: transparent;
+    }
+
+    &.active,
+    &:active {
+      border-color: $defaultColor;
+      color: $defaultColor;
+      background-color: transparent;
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.btn {
+  --bs-btn-padding-x: 2.3rem;
+  --bs-btn-padding-y: 1.4rem;
+  --bs-btn-font-family: Montserrat, Roboto, Arial, sans-serif;
+  --bs-btn-font-size: calc(1.265rem + 0.18vw);
+  --bs-btn-font-weight: 700;
+  --bs-btn-line-height: 1.286;
+  --bs-btn-color: #3c3c3c;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-width: 0.1rem;
+  --bs-btn-border-color: transparent;
+  --bs-btn-border-radius: 0.8rem;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  --bs-btn-disabled-opacity: 0.65;
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), 0.5);
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+  font-family: var(--bs-btn-font-family);
+  font-size: var(--bs-btn-font-size);
+  font-weight: var(--bs-btn-font-weight);
+  line-height: var(--bs-btn-line-height);
+  color: var(--bs-btn-color);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+  border-radius: var(--bs-btn-border-radius);
+  background-color: var(--bs-btn-bg);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+
+  &-primary {
+    color: $dark-grey;
+
+    @include btn-animation($supernova, #ffb805);
+  }
+
+  &-outline-primary {
+    @include btn-outline-animation($supernova);
+  }
+
+  &-secondary {
+    @include btn-animation($cobalt, $cobalt-dark);
+  }
+
+  &-outline-secondary {
+    @include btn-outline-animation($cobalt);
+  }
+
+  &-default {
+    color: $white !important;
+
+    @include btn-animation($nebula-blue, $nebula-blue-dark);
+  }
+
+  &-outline-default {
+    border-color: $nebula-blue;
+    color: $nebula-blue;
+
+    @include btn-outline-animation($nebula-blue);
+  }
+
+  &-info {
+    color: $white !important;
+    @include btn-animation($myrtille-dark, darken($myrtille-dark, 10%));
+  }
+
+  &-outline-info {
+    border-color: $myrtille-dark;
+    color: $myrtille-dark;
+
+    @include btn-outline-animation($myrtille);
+  }
+
+  &-dark {
+    @include btn-animation($dark-grey, #212121);
+  }
+
+  &-outline-dark {
+    @include btn-outline-animation($dark-grey);
+  }
+
+  &-light {
+    @include btn-animation($white, $neutral-light);
+  }
+
+  &-outline-light {
+    @include btn-outline-animation($white);
+  }
+
+  &:disabled,
+  &.disabled {
+    pointer-events: none;
+
+    &:not(.btn-link) {
+      border-color: $neutral-darkest;
+      background-color: $neutral-darkest;
+      color: $white !important;
+    }
+  }
+
+  [class^='#{$prefix}-'] {
+    font-size: 2.2rem;
+    line-height: 1;
+
+    &:before {
+      display: inline-block;
+    }
+  }
+
+  &-sm [class^='lpi-'] {
+    font-size: 1.4em;
+  }
+}
+
+.btn-link {
+  gap: 0.7rem;
+  padding: 0;
+  font-family: $font-family-base;
+
+  &:not(:disabled):not(.disabled) {
+    &:hover,
+    &:focus,
+    &.focus {
+      text-decoration: none;
+    }
+  }
+
+  &-default {
+    color: $default;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $default;
+    }
+  }
+
+  &-light {
+    color: $additional-link;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $additional-link;
+    }
+  }
+}
+
+.btn-group-toggle {
+  .btn {
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+
+    &-lg {
+      font-size: 1.6rem;
+    }
+
+    &-check:checked + .btn-outline-dark,
+    &-check:not(:disabled) + .btn-outline-dark:hover,
+    &-check:not(:disabled) + .btn-outline-dark:focus {
+      box-shadow: none;
+      background-color: $primary;
+      color: $black;
+    }
+  }
+}

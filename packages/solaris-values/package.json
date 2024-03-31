@@ -1,0 +1,19 @@
+{
+  "name": "solaris-values",
+  "version": "0.0.1",
+  "author": "Lynxgsm <lynxgsm@github.com>",
+  "license": "ISC",
+  "private": true,
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup index.ts --format cjs,esm --dts"
+  },
+  "devDependencies": {
+    "tsup": "^7.2.0"
+  }
+}
