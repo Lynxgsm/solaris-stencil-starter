@@ -44,7 +44,7 @@
   }
 
   input:checked + .solaris-slider {
-    @include backgroundColor($brand-nebula-blue);
+    @include bg-color($brand-nebula-blue);
 
     &:before {
       transform: translateX(34px);

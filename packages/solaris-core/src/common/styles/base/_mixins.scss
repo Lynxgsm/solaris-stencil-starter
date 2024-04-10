@@ -1,27 +1,19 @@
-@mixin backgroundColor($color) {
+// Mixins for backgroundcolor
+@mixin bg-color($color) {
   background-color: $color;
 }
 
-@mixin textColor($color) {
+// Mixins for text color
+@mixin text-color($color) {
   color: $color;
 }
 
-@mixin fontSize($fontSize) {
-  font-size: $fontSize;
-}
-
-@mixin fontWeight($fontWeight) {
-  font-weight: $fontWeight;
-}
-
-@mixin fontFamily($fontFamily) {
-  font-weight: $fontFamily;
-}
-
-@mixin borderColor($color) {
+// Mixins for border color
+@mixin border-color($color) {
   border-color: $color;
 }
 
-@mixin zIndex($index) {
-  z-index: $index;
+// Mixins for box shadow
+@mixin box-shadow($shadow) {
+  box-shadow: $shadow;
 }
