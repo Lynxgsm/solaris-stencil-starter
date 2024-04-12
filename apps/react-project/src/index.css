@@ -11,9 +11,7 @@ html {
   margin-right: 4rem;
 }
 
-.bg-red {
-  background-color: red;
-  color: green;
-  font-weight: bold;
-  text-decoration: underline;
+.my-4 {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }

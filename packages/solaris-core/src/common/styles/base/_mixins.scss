@@ -13,6 +13,11 @@
   border-color: $color;
 }
 
+// Mixins for outline color
+@mixin outline-color($color) {
+  outline-color: $color;
+}
+
 // Mixins for box shadow
 @mixin box-shadow($shadow) {
   box-shadow: $shadow;

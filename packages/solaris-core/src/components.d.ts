@@ -13,7 +13,7 @@ export namespace Components {
     interface SolarisAccordion {
     }
     interface SolarisButton {
-        "color": 'supernova' | 'default' | 'cobalt' | 'darkgrey' | 'white' | 'danger';
+        "color": 'supernova' | 'error' | 'nebula-blue' | 'myrtille' | 'black' | 'disabled-light' | 'neutral' | 'comet';
         "customClass"?: string;
         "disabled": boolean;
         "focusable"?: boolean;
@@ -23,7 +23,7 @@ export namespace Components {
         "loading"?: boolean;
         "radius"?: number;
         "size": 'sm' | 'md' | 'lg';
-        "type": 'default' | 'outline' | 'ghost';
+        "type": 'default' | 'outline' | 'link';
     }
     interface SolarisIcon {
         "name": IconName;
@@ -85,7 +85,7 @@ declare namespace LocalJSX {
     interface SolarisAccordion {
     }
     interface SolarisButton {
-        "color"?: 'supernova' | 'default' | 'cobalt' | 'darkgrey' | 'white' | 'danger';
+        "color"?: 'supernova' | 'error' | 'nebula-blue' | 'myrtille' | 'black' | 'disabled-light' | 'neutral' | 'comet';
         "customClass"?: string;
         "disabled"?: boolean;
         "focusable"?: boolean;
@@ -95,7 +95,7 @@ declare namespace LocalJSX {
         "loading"?: boolean;
         "radius"?: number;
         "size"?: 'sm' | 'md' | 'lg';
-        "type"?: 'default' | 'outline' | 'ghost';
+        "type"?: 'default' | 'outline' | 'link';
     }
     interface SolarisIcon {
         "name"?: IconName;

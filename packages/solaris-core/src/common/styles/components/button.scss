@@ -3,15 +3,74 @@
 @import '../base/mixins';
 @import '../base/variables';
 
+$supernova: ('supernova' $brand-supernova $black $brand-supernova-dark $brand-supernova-dark $neutral-white $black-dark);
+$nebula-blue: ('nebula-blue' $brand-nebula-blue $white $brand-nebula-blue-dark $brand-nebula-blue-dark $brand-supernova $neutral-white);
+$error: ('error' $system-error $white $system-error-dark $system-error-dark $transparent $white);
+$myrtille: ('myrtille' $brand-myrtille $white $brand-myrtille-dark $brand-myrtille-dark $neutral-white $brand-supernova $neutral-white);
+$black: ('black' $black-dark $white $black-dark $black-dark $neutral-white $black-dark);
+$disabled-light: ('disabled-light' $disabled-light $white $disabled-light $disabled-light);
+$neutral: ('neutral' $neutral-neutral $white $neutral-neutral $neutral-neutral);
+$comet: ('comet' $brand-comet $white $brand-comet-dark $brand-comet-dark $neutral-white);
+
+$default-colors: ($supernova, $error, $nebula-blue, $myrtille, $black, $disabled-light, $neutral, $comet);
+
+@mixin spinner($color, $bottomColor) {
+  .spinner {
+    border: 3px solid #{$color};
+    border-bottom-color: #{$bottomColor};
+  }
+}
+
+@mixin btn-default-colors($name, $bgColor, $textColor, $hoverColor, $activeColor, $spinnerSolidColor, $spinnerBottomColor) {
+  @include bg-color($bgColor);
+  @include text-color($textColor);
+  &:hover {
+    @include bg-color($hoverColor);
+  }
+  &:active {
+    @include bg-color($activeColor);
+  }
+
+  @if $spinnerSolidColor!=null and $spinnerBottomColor!=null {
+    .spinner {
+      border: 3px solid $spinnerSolidColor;
+      border-bottom-color: $spinnerBottomColor;
+    }
+  }
+}
+
+@mixin btn-outline-colors($name, $borderColor, $textColor) {
+  &.#{$prefix}-btn-#{$name} {
+    @include outline-color($borderColor);
+    @include text-color($textColor);
+    @include spinner($white, $borderColor);
+  }
+}
+
+@mixin btn-link-colors($name, $color, $hoverColor, $activeColor) {
+  &.#{$prefix}-btn-#{$name} {
+    @include text-color($color);
+    @include spinner($white, $color);
+
+    &:hover {
+      @include text-color($hoverColor);
+    }
+    &:active {
+      @include text-color($activeColor);
+    }
+  }
+}
+
 .base {
   padding: px-to-rem(12px) px-to-rem(24px);
   border: none;
   display: flex;
+  border-radius: px-to-rem(8px);
   position: relative;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  gap: 8px;
+  gap: px-to-rem(8px);
   width: fit-content;
   text-decoration: none;
   transition: 100ms all;
@@ -63,86 +122,9 @@
     font-size: px-to-rem(12px);
   }
 
-  &.#{$prefix}-btn-error {
-    &:hover {
-      @include bg-color($system-error-dark);
-    }
-    &:active {
-      @include bg-color($system-error);
-    }
-  }
-
-  &.#{$prefix}-btn-nebula-blue {
-    @include bg-color($brand-nebula-blue);
-    &:hover {
-      @include bg-color($brand-nebula-blue-dark);
-    }
-    &:active {
-      @include bg-color($brand-nebula-blue);
-    }
-
-    .spinner {
-      border: 3px solid #fff;
-      border-bottom-color: #ffc905;
-    }
-  }
-
-  &.#{$prefix}-btn-myrtille {
-    @include bg-color($brand-myrtille);
-    &:hover {
-      @include bg-color($brand-myrtille-dark);
-    }
-    &:active {
-      @include bg-color($brand-myrtille);
-    }
-
-    .spinner {
-      border: 3px solid #fff;
-      border-bottom-color: #ffc905;
-    }
-  }
-
-  &.#{$prefix}-btn-black {
-    @include bg-color($black-dark);
-    &:hover {
-      @include bg-color($black-dark);
-    }
-    &:active {
-      @include bg-color($black-dark);
-    }
-    .spinner {
-      border: 3px solid black;
-      border-bottom-color: white;
-    }
-  }
-
-  &.#{$prefix}-btn-disabled-light {
-    @include bg-color($disabled-light);
-    &:hover {
-      @include bg-color($disabled-light);
-    }
-    &:active {
-      @include bg-color($disabled-light);
-    }
-  }
-
-  &.#{$prefix}-btn-supernova {
-    @include bg-color($brand-supernova);
-    &:hover {
-      @include bg-color($brand-supernova);
-    }
-    &:active {
-      @include bg-color($brand-supernova);
-    }
-  }
-
-  &.#{$prefix}-btn-neutral {
-    @include bg-color($neutral-neutral);
-    &:hover {
-      @include bg-color($neutral-neutral);
-    }
-    &:active {
-      @include bg-color($neutral-neutral);
+  @each $name, $bgColor, $textColor, $hoverColor, $activeColor, $spinnerSolidColor, $spinnerBottomColor in $default-colors {
+    &.#{$prefix}-btn-#{$name} {
+      @include btn-default-colors($name, $bgColor, $textColor, $hoverColor, $activeColor, $spinnerSolidColor, $spinnerBottomColor);
     }
   }
 }
@@ -150,6 +132,12 @@
 .#{$prefix}-btn-link {
   @extend .base;
   background-color: transparent;
+
+  @each $name, $bgColor, $textColor, $hoverColor, $activeColor in $default-colors {
+    &.#{$prefix}-btn-#{$name} {
+      @include btn-link-colors($name, $bgColor, $hoverColor, $activeColor);
+    }
+  }
 }
 
 .#{$prefix}-btn-outline {
@@ -161,38 +149,9 @@
     outline: 3px solid;
   }
 
-  &.#{$prefix}-btn-supernova {
-    @include border-color($brand-supernova);
-    @include text-color($brand-supernova);
-  }
-  &.#{$prefix}-btn-comet {
-    @include border-color($brand-comet);
-    @include text-color($brand-comet);
-  }
-  &.#{$prefix}-btn-error {
-    @include border-color($system-error);
-    @include text-color($system-error);
-  }
-  &.#{$prefix}-btn-myrtille {
-    @include border-color($brand-myrtille);
-    @include text-color($brand-myrtille);
-  }
-  &.#{$prefix}-btn-nebula-blue {
-    @include border-color($brand-nebula-blue);
-    @include text-color($brand-nebula-blue);
-  }
-  &.#{$prefix}-btn-black {
-    @include border-color($black-dark);
-    @include text-color($black-dark);
-    .spinner {
-      border: 3px solid #fff;
-      border-bottom-color: black;
+  @each $name, $bgColor, $hoverColor, $activeColor in $default-colors {
+    &.#{$prefix}-btn-#{$name} {
+      @include btn-outline-colors($name, $bgColor, $bgColor);
     }
-  }
-  &.#{$prefix}-btn-white {
-    @include border-color($neutral-white);
-  }
-  &.#{$prefix}-btn-disabled-light {
-    @include border-color($disabled-light);
   }
 }

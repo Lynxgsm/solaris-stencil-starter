@@ -5,7 +5,26 @@ import { SolarisButton } from 'solaris-react';
 const meta = {
   title: 'Buttons/Button',
   component: SolarisButton,
-  parameters: {},
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+    },
+    color: {
+      control: 'select',
+      options: [
+        'supernova',
+        'black',
+        'myrtille',
+        'nebula-blue',
+        'error',
+        'comet',
+      ],
+    },
+    loading: {
+      control: 'boolean',
+    },
+  },
   tags: ['autodocs'],
 } satisfies Meta<typeof SolarisButton>;
 
@@ -17,7 +36,6 @@ export const Default: Story = {
   args: {
     children: 'Here is a button',
     color: 'supernova',
-    fullWidth: false,
   },
 };
 
