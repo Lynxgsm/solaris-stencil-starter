@@ -1,0 +1,46 @@
+@import '../base/mixins';
+@import '../base/variables';
+@import '../base/functions';
+
+@mixin spinner($color, $bottomColor) {
+  .spinner {
+    border: 3px solid #{$color};
+    border-bottom-color: #{$bottomColor};
+  }
+}
+
+.#{$prefix}-avatar {
+  padding: px-to-rem(8px);
+  width: fit-content;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &.#{$prefix}-avatar-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+
+  &.#{$prefix}-avatar-error {
+    @extend .bg-error, .text-white;
+  }
+  &.#{$prefix}-avatar-black {
+    @extend .bg-black, .text-white;
+  }
+  &.#{$prefix}-avatar-supernova {
+    @extend .bg-supernova, .text-black;
+  }
+  &.#{$prefix}-avatar-nebula-blue {
+    @extend .bg-nebula-blue, .text-white;
+  }
+  &.#{$prefix}-avatar-cobalt {
+    @extend .bg-cobalt, .text-white;
+  }
+  &.#{$prefix}-avatar-comet {
+    @extend .bg-comet, .text-white;
+  }
+  &.#{$prefix}-avatar-white {
+    @extend .bg-white, .text-black;
+  }
+}

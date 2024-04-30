@@ -7,7 +7,16 @@ const meta = {
   component: SolarisSwitch,
   parameters: {},
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {
+    disabled: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    checked: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+  },
 } satisfies Meta<typeof SolarisSwitch>;
 
 export default meta;

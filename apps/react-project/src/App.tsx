@@ -7,17 +7,11 @@ export default function App() {
     <div className='mx-4 my-4'>
       <button
         onClick={() => setloading(!loading)}
-        className='lp-btn-default lp-btn-myrtille lp-loading'
+        className='lp-btn-outline lp-btn-myrtille lp-btn-sm'
       >
         Hello World
       </button>
-      <SolarisButton
-        iconPosition='right'
-        color='supernova'
-        type='link'
-        size='lg'
-        loading={loading}
-      >
+      <SolarisButton color='supernova' type='link' size='lg' loading={loading}>
         Button
       </SolarisButton>
       {loading ? 'true' : 'false'}

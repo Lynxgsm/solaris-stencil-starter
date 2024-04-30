@@ -19,10 +19,22 @@ const meta = {
         'nebula-blue',
         'error',
         'comet',
+        'neutral',
+        'disabled-light',
       ],
+      defaultValue: 'myrtille',
     },
     loading: {
       control: 'boolean',
+    },
+    type: {
+      control: 'select',
+      options: ['default', 'link', 'outline'],
+      defaultValue: 'default',
+    },
+    slot: {
+      control: 'text',
+      type: 'string',
     },
   },
   tags: ['autodocs'],
@@ -34,15 +46,28 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Here is a button',
+    children: 'Button',
     color: 'supernova',
   },
 };
 
 export const Black: Story = {
   args: {
-    children: 'Here is a button',
+    children: 'Button',
     color: 'black',
-    fullWidth: true,
+  },
+};
+
+export const CometLoading: Story = {
+  args: {
+    children: 'Button',
+    color: 'comet',
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    children: 'Button',
+    color: 'comet',
   },
 };

@@ -5,12 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Color, ColorScheme } from "./common/types/color-scheme";
 import { IconName } from "./common/types/icon";
-import { Color } from "./common/types/color-scheme";
+export { Color, ColorScheme } from "./common/types/color-scheme";
 export { IconName } from "./common/types/icon";
-export { Color } from "./common/types/color-scheme";
 export namespace Components {
     interface SolarisAccordion {
+    }
+    interface SolarisAvatar {
+        "backgroundColor"?: ColorScheme;
     }
     interface SolarisButton {
         "color": 'supernova' | 'error' | 'nebula-blue' | 'myrtille' | 'black' | 'disabled-light' | 'neutral' | 'comet';
@@ -29,7 +32,11 @@ export namespace Components {
         "name": IconName;
         "variant": 'regular' | 'bold' | 'light';
     }
+    interface SolarisModal {
+    }
     interface SolarisSwitch {
+        "checked": boolean;
+        "disabled": boolean;
     }
     interface SolarisThemeProvider {
         "theme": Partial<{
@@ -49,6 +56,12 @@ declare global {
         prototype: HTMLSolarisAccordionElement;
         new (): HTMLSolarisAccordionElement;
     };
+    interface HTMLSolarisAvatarElement extends Components.SolarisAvatar, HTMLStencilElement {
+    }
+    var HTMLSolarisAvatarElement: {
+        prototype: HTMLSolarisAvatarElement;
+        new (): HTMLSolarisAvatarElement;
+    };
     interface HTMLSolarisButtonElement extends Components.SolarisButton, HTMLStencilElement {
     }
     var HTMLSolarisButtonElement: {
@@ -60,6 +73,12 @@ declare global {
     var HTMLSolarisIconElement: {
         prototype: HTMLSolarisIconElement;
         new (): HTMLSolarisIconElement;
+    };
+    interface HTMLSolarisModalElement extends Components.SolarisModal, HTMLStencilElement {
+    }
+    var HTMLSolarisModalElement: {
+        prototype: HTMLSolarisModalElement;
+        new (): HTMLSolarisModalElement;
     };
     interface HTMLSolarisSwitchElement extends Components.SolarisSwitch, HTMLStencilElement {
     }
@@ -75,14 +94,19 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "solaris-accordion": HTMLSolarisAccordionElement;
+        "solaris-avatar": HTMLSolarisAvatarElement;
         "solaris-button": HTMLSolarisButtonElement;
         "solaris-icon": HTMLSolarisIconElement;
+        "solaris-modal": HTMLSolarisModalElement;
         "solaris-switch": HTMLSolarisSwitchElement;
         "solaris-theme-provider": HTMLSolarisThemeProviderElement;
     }
 }
 declare namespace LocalJSX {
     interface SolarisAccordion {
+    }
+    interface SolarisAvatar {
+        "backgroundColor"?: ColorScheme;
     }
     interface SolarisButton {
         "color"?: 'supernova' | 'error' | 'nebula-blue' | 'myrtille' | 'black' | 'disabled-light' | 'neutral' | 'comet';
@@ -101,7 +125,11 @@ declare namespace LocalJSX {
         "name"?: IconName;
         "variant"?: 'regular' | 'bold' | 'light';
     }
+    interface SolarisModal {
+    }
     interface SolarisSwitch {
+        "checked"?: boolean;
+        "disabled"?: boolean;
     }
     interface SolarisThemeProvider {
         "theme"?: Partial<{
@@ -115,8 +143,10 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "solaris-accordion": SolarisAccordion;
+        "solaris-avatar": SolarisAvatar;
         "solaris-button": SolarisButton;
         "solaris-icon": SolarisIcon;
+        "solaris-modal": SolarisModal;
         "solaris-switch": SolarisSwitch;
         "solaris-theme-provider": SolarisThemeProvider;
     }
@@ -126,8 +156,10 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "solaris-accordion": LocalJSX.SolarisAccordion & JSXBase.HTMLAttributes<HTMLSolarisAccordionElement>;
+            "solaris-avatar": LocalJSX.SolarisAvatar & JSXBase.HTMLAttributes<HTMLSolarisAvatarElement>;
             "solaris-button": LocalJSX.SolarisButton & JSXBase.HTMLAttributes<HTMLSolarisButtonElement>;
             "solaris-icon": LocalJSX.SolarisIcon & JSXBase.HTMLAttributes<HTMLSolarisIconElement>;
+            "solaris-modal": LocalJSX.SolarisModal & JSXBase.HTMLAttributes<HTMLSolarisModalElement>;
             "solaris-switch": LocalJSX.SolarisSwitch & JSXBase.HTMLAttributes<HTMLSolarisSwitchElement>;
             "solaris-theme-provider": LocalJSX.SolarisThemeProvider & JSXBase.HTMLAttributes<HTMLSolarisThemeProviderElement>;
         }
